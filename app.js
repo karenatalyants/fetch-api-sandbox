@@ -8,50 +8,48 @@ document.getElementById("button3").addEventListener("click", getExternal);
 
 function getText() {
   fetch("test.txt")
-    .then(function(res) {
+    .then(res => {
       return res.text();
     })
-    .then(function(data) {
+    .then(data => {
       console.log(data);
       document.getElementById("output").innerHTML = data;
     })
-    .catch(function(err) {
+    .catch(err => {
       console.log(err);
     })
 }
 
 
 function getJson() {
-  fetch("posts.json").then(function(res) {
+  fetch("posts.json").then(res => {
       return res.json();
     })
-    .then(function(resp) {
+    .then(resp => {
       let output = "";
-      resp.forEach(function(post) {
+      resp.forEach(post => {
         output += `<li>${post.title}</li>`;
       });
       document.getElementById("output").innerHTML = output;
     })
-    .catch(function(err) {
-      console.log(err);
-    })
+    .catch(err => console.log(err))
 }
 
 
 
 function getExternal() {
   fetch("https://api.github.com/users")
-    .then(function(res) {
+    .then(res => {
       return res.json();
     })
-    .then(function(resp) {
+    .then(resp => {
       let output = "";
-      resp.forEach(function(user) {
+      resp.forEach(user => {
         output += `<li>${user.login}</li>`;
       });
       document.getElementById("output").innerHTML = output;
     })
-    .catch(function(err) {
+    .catch(err => {
       console.log(err);
     })
 }
